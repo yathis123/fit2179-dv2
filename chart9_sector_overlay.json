@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "E-Commerce Income by Sector with B2C Portion (2023)",
+  "width": "container",
+  "height": 280,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"sector": "Manufacturing", "total": 587.3, "b2c": 95.4},
+          {"sector": "Services", "total": 583.0, "b2c": 228.6},
+          {"sector": "Construction", "total": 6.2, "b2c": 1.1},
+          {"sector": "Agriculture", "total": 4.1, "b2c": 0.9}
+        ]
+      },
+      "mark": {"type": "bar", "cornerRadiusEnd": 4, "color": "#1e3a8a"},
+      "encoding": {
+        "y": {"field": "sector", "type": "nominal", "sort": "-x", "axis": {"title": null}},
+        "x": {"field": "total", "type": "quantitative", "axis": {"title": "E-Commerce Income (RM B)"}},
+        "tooltip": [
+          {"field": "sector"},
+          {"field": "total", "title": "Total Income (RM B)", "format": ".1f"},
+          {"field": "b2c", "title": "B2C Portion (RM B)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"sector": "Manufacturing", "total": 587.3, "b2c": 95.4},
+          {"sector": "Services", "total": 583.0, "b2c": 228.6},
+          {"sector": "Construction", "total": 6.2, "b2c": 1.1},
+          {"sector": "Agriculture", "total": 4.1, "b2c": 0.9}
+        ]
+      },
+      "mark": {"type": "circle", "filled": true, "size": 100, "color": "#ff6b35"},
+      "encoding": {
+        "y": {"field": "sector", "type": "nominal", "sort": "-x"},
+        "x": {"field": "b2c", "type": "quantitative"},
+        "tooltip": [
+          {"field": "sector"},
+          {"field": "b2c", "title": "B2C Portion (RM B)", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

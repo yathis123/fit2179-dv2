@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Quarterly E-Commerce Income (2023-2025)",
+  "width": "container",
+  "height": 260,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"period": "2023 Q1", "value": 289.4},
+          {"period": "2023 Q2", "value": 287.9},
+          {"period": "2023 Q3", "value": 297.1},
+          {"period": "2023 Q4", "value": 299.6},
+          {"period": "2024 Q1", "value": 301.0},
+          {"period": "2024 Q2", "value": 310.4},
+          {"period": "2024 Q3", "value": 308.5},
+          {"period": "2024 Q4", "value": 313.8},
+          {"period": "2025 Q1", "value": 299.4},
+          {"period": "2025 Q2", "value": 313.8},
+          {"period": "2025 Q3", "value": 312.6}
+        ]
+      },
+      "mark": {
+        "type": "line",
+        "color": "#ff6b35",
+        "strokeWidth": 2.5,
+        "point": {"filled": true, "fill": "#ff6b35", "size": 50}
+      },
+      "encoding": {
+        "x": {"field": "period", "type": "ordinal", "axis": {"title": null, "labelAngle": -35}},
+        "y": {"field": "value", "type": "quantitative", "axis": {"title": "RM Billion"}, "scale": {"zero": false}},
+        "tooltip": [
+          {"field": "period", "title": "Quarter"},
+          {"field": "value", "title": "E-Commerce Income (RM B)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"period": "2024 Q4", "value": 313.8, "label": "Peak: RM313.8b"}]},
+      "mark": {"type": "text", "color": "#ff6b35", "fontSize": 11, "fontWeight": "bold", "dy": -14, "dx": 10},
+      "encoding": {
+        "x": {"field": "period", "type": "ordinal"},
+        "y": {"field": "value", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}

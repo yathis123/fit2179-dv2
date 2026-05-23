@@ -1,0 +1,58 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Internet Access by Malaysian State (2024)",
+  "width": "container",
+  "height": 420,
+  "layer": [
+    {
+      "data": {
+        "url": "malaysia_states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.state",
+          "from": {
+            "data": {
+              "values": [
+                {"state": "W.P. Kuala Lumpur", "internet": 100.0, "fixedBB": 74.27, "computer": 99.77},
+                {"state": "W.P. Labuan", "internet": 99.70, "fixedBB": 42.17, "computer": 97.28},
+                {"state": "Pulau Pinang", "internet": 99.67, "fixedBB": 55.76, "computer": 96.37},
+                {"state": "Selangor", "internet": 99.52, "fixedBB": 60.16, "computer": 96.42},
+                {"state": "Johor", "internet": 98.97, "fixedBB": 53.86, "computer": 93.06},
+                {"state": "Melaka", "internet": 96.77, "fixedBB": 55.74, "computer": 92.61},
+                {"state": "Negeri Sembilan", "internet": 96.44, "fixedBB": 47.84, "computer": 90.28},
+                {"state": "Kedah", "internet": 96.35, "fixedBB": 34.86, "computer": 86.80},
+                {"state": "Perlis", "internet": 96.22, "fixedBB": 32.63, "computer": 89.93},
+                {"state": "Pahang", "internet": 95.78, "fixedBB": 32.31, "computer": 88.55},
+                {"state": "Perak", "internet": 95.63, "fixedBB": 40.76, "computer": 91.42},
+                {"state": "Terengganu", "internet": 95.20, "fixedBB": 28.91, "computer": 90.30},
+                {"state": "Kelantan", "internet": 94.94, "fixedBB": 25.20, "computer": 88.09},
+                {"state": "Sarawak", "internet": 91.05, "fixedBB": 33.37, "computer": 88.73},
+                {"state": "Sabah", "internet": 91.01, "fixedBB": 31.67, "computer": 84.37}
+              ]
+            },
+            "key": "state",
+            "fields": ["internet", "fixedBB", "computer"]
+          }
+        }
+      ],
+      "projection": {"type": "mercator"},
+      "mark": {"type": "geoshape", "stroke": "#0a0f1e", "strokeWidth": 1.5},
+      "encoding": {
+        "color": {
+          "field": "internet",
+          "type": "quantitative",
+          "scale": {"domain": [88, 100], "range": ["#1e3a5f", "#00d4ff"]},
+          "legend": {"title": "Internet Access (%)"}
+        },
+        "tooltip": [
+          {"field": "properties.state", "title": "State"},
+          {"field": "internet", "title": "Internet Access (%)", "format": ".1f"},
+          {"field": "fixedBB", "title": "Fixed Broadband (%)", "format": ".1f"},
+          {"field": "computer", "title": "Computer Access (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

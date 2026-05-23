@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Urban vs Rural Internet Access by State (2024)",
+  "width": "container",
+  "height": 380,
+  "data": {
+    "values": [
+      {"state": "Johor", "area": "Urban", "value": 99.26, "gap": 1.37},
+      {"state": "Johor", "area": "Rural", "value": 97.89, "gap": 1.37},
+      {"state": "Kedah", "area": "Urban", "value": 97.75, "gap": 4.29},
+      {"state": "Kedah", "area": "Rural", "value": 93.46, "gap": 4.29},
+      {"state": "Kelantan", "area": "Urban", "value": 95.99, "gap": 1.93},
+      {"state": "Kelantan", "area": "Rural", "value": 94.06, "gap": 1.93},
+      {"state": "Melaka", "area": "Urban", "value": 96.98, "gap": 2.35},
+      {"state": "Melaka", "area": "Rural", "value": 94.63, "gap": 2.35},
+      {"state": "Negeri Sembilan", "area": "Urban", "value": 98.72, "gap": 7.96},
+      {"state": "Negeri Sembilan", "area": "Rural", "value": 90.76, "gap": 7.96},
+      {"state": "Pahang", "area": "Urban", "value": 96.67, "gap": 1.94},
+      {"state": "Pahang", "area": "Rural", "value": 94.73, "gap": 1.94},
+      {"state": "Pulau Pinang", "area": "Urban", "value": 99.71, "gap": 0.57},
+      {"state": "Pulau Pinang", "area": "Rural", "value": 99.14, "gap": 0.57},
+      {"state": "Perak", "area": "Urban", "value": 96.98, "gap": 5.13},
+      {"state": "Perak", "area": "Rural", "value": 91.85, "gap": 5.13},
+      {"state": "Perlis", "area": "Urban", "value": 98.83, "gap": 5.97},
+      {"state": "Perlis", "area": "Rural", "value": 92.86, "gap": 5.97},
+      {"state": "Selangor", "area": "Urban", "value": 99.60, "gap": 1.91},
+      {"state": "Selangor", "area": "Rural", "value": 97.69, "gap": 1.91},
+      {"state": "Terengganu", "area": "Urban", "value": 96.29, "gap": 2.99},
+      {"state": "Terengganu", "area": "Rural", "value": 93.30, "gap": 2.99},
+      {"state": "Sabah", "area": "Urban", "value": 98.23, "gap": 16.18},
+      {"state": "Sabah", "area": "Rural", "value": 82.05, "gap": 16.18},
+      {"state": "Sarawak", "area": "Urban", "value": 98.87, "gap": 18.44},
+      {"state": "Sarawak", "area": "Rural", "value": 80.43, "gap": 18.44},
+      {"state": "W.P. Labuan", "area": "Urban", "value": 100.0, "gap": 3.13},
+      {"state": "W.P. Labuan", "area": "Rural", "value": 96.87, "gap": 3.13}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 1.5, "opacity": 0.8},
+      "encoding": {
+        "x": {
+          "field": "area",
+          "type": "ordinal",
+          "scale": {"domain": ["Urban", "Rural"]},
+          "axis": {"title": null, "labelFontSize": 12, "labelFontWeight": "bold"}
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "axis": {"title": "Internet Access (%)"},
+          "scale": {"domain": [78, 102]}
+        },
+        "color": {
+          "field": "gap",
+          "type": "quantitative",
+          "scale": {"domain": [0, 19], "range": ["#00d4ff", "#ff6b35"]},
+          "legend": {"title": "Urban–Rural Gap (pp)"}
+        },
+        "detail": {"field": "state", "type": "nominal"},
+        "tooltip": [
+          {"field": "state", "title": "State"},
+          {"field": "area", "title": "Area"},
+          {"field": "value", "title": "Internet Access (%)", "format": ".1f"},
+          {"field": "gap", "title": "Gap (pp)", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

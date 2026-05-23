@@ -1,0 +1,88 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "ICT Access Heatmap by State (2024)",
+  "width": "container",
+  "height": 340,
+  "data": {
+    "values": [
+      {"state": "W.P. Kuala Lumpur", "metric": "Internet Access", "value": 100.0},
+      {"state": "W.P. Kuala Lumpur", "metric": "Mobile Broadband", "value": 97.74},
+      {"state": "W.P. Kuala Lumpur", "metric": "Fixed Broadband", "value": 74.27},
+      {"state": "W.P. Kuala Lumpur", "metric": "Computer Access", "value": 99.77},
+      {"state": "Pulau Pinang", "metric": "Internet Access", "value": 99.67},
+      {"state": "Pulau Pinang", "metric": "Mobile Broadband", "value": 97.70},
+      {"state": "Pulau Pinang", "metric": "Fixed Broadband", "value": 55.76},
+      {"state": "Pulau Pinang", "metric": "Computer Access", "value": 96.37},
+      {"state": "Selangor", "metric": "Internet Access", "value": 99.52},
+      {"state": "Selangor", "metric": "Mobile Broadband", "value": 99.44},
+      {"state": "Selangor", "metric": "Fixed Broadband", "value": 60.16},
+      {"state": "Selangor", "metric": "Computer Access", "value": 96.42},
+      {"state": "Johor", "metric": "Internet Access", "value": 98.97},
+      {"state": "Johor", "metric": "Mobile Broadband", "value": 97.89},
+      {"state": "Johor", "metric": "Fixed Broadband", "value": 53.86},
+      {"state": "Johor", "metric": "Computer Access", "value": 93.06},
+      {"state": "Melaka", "metric": "Internet Access", "value": 96.77},
+      {"state": "Melaka", "metric": "Mobile Broadband", "value": 95.97},
+      {"state": "Melaka", "metric": "Fixed Broadband", "value": 55.74},
+      {"state": "Melaka", "metric": "Computer Access", "value": 92.61},
+      {"state": "Negeri Sembilan", "metric": "Internet Access", "value": 96.44},
+      {"state": "Negeri Sembilan", "metric": "Mobile Broadband", "value": 95.19},
+      {"state": "Negeri Sembilan", "metric": "Fixed Broadband", "value": 47.84},
+      {"state": "Negeri Sembilan", "metric": "Computer Access", "value": 90.28},
+      {"state": "Kedah", "metric": "Internet Access", "value": 96.35},
+      {"state": "Kedah", "metric": "Mobile Broadband", "value": 95.71},
+      {"state": "Kedah", "metric": "Fixed Broadband", "value": 34.86},
+      {"state": "Kedah", "metric": "Computer Access", "value": 86.80},
+      {"state": "Pahang", "metric": "Internet Access", "value": 95.78},
+      {"state": "Pahang", "metric": "Mobile Broadband", "value": 93.92},
+      {"state": "Pahang", "metric": "Fixed Broadband", "value": 32.31},
+      {"state": "Pahang", "metric": "Computer Access", "value": 88.55},
+      {"state": "Perak", "metric": "Internet Access", "value": 95.63},
+      {"state": "Perak", "metric": "Mobile Broadband", "value": 92.35},
+      {"state": "Perak", "metric": "Fixed Broadband", "value": 40.76},
+      {"state": "Perak", "metric": "Computer Access", "value": 91.42},
+      {"state": "Terengganu", "metric": "Internet Access", "value": 95.20},
+      {"state": "Terengganu", "metric": "Mobile Broadband", "value": 93.40},
+      {"state": "Terengganu", "metric": "Fixed Broadband", "value": 28.91},
+      {"state": "Terengganu", "metric": "Computer Access", "value": 90.30},
+      {"state": "Kelantan", "metric": "Internet Access", "value": 94.94},
+      {"state": "Kelantan", "metric": "Mobile Broadband", "value": 93.99},
+      {"state": "Kelantan", "metric": "Fixed Broadband", "value": 25.20},
+      {"state": "Kelantan", "metric": "Computer Access", "value": 88.09},
+      {"state": "Sarawak", "metric": "Internet Access", "value": 91.05},
+      {"state": "Sarawak", "metric": "Mobile Broadband", "value": 90.25},
+      {"state": "Sarawak", "metric": "Fixed Broadband", "value": 33.37},
+      {"state": "Sarawak", "metric": "Computer Access", "value": 88.73},
+      {"state": "Sabah", "metric": "Internet Access", "value": 91.01},
+      {"state": "Sabah", "metric": "Mobile Broadband", "value": 90.88},
+      {"state": "Sabah", "metric": "Fixed Broadband", "value": 31.67},
+      {"state": "Sabah", "metric": "Computer Access", "value": 84.37}
+    ]
+  },
+  "mark": {"type": "rect"},
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": {"field": "value", "op": "mean", "order": "descending"},
+      "axis": {"title": null, "labelFontSize": 10}
+    },
+    "x": {
+      "field": "metric",
+      "type": "nominal",
+      "axis": {"title": null, "labelAngle": -15, "labelFontSize": 11},
+      "sort": ["Internet Access", "Mobile Broadband", "Computer Access", "Fixed Broadband"]
+    },
+    "color": {
+      "field": "value",
+      "type": "quantitative",
+      "scale": {"domain": [20, 100], "range": ["#0a0f1e", "#00d4ff"]},
+      "legend": {"title": "Access (%)"}
+    },
+    "tooltip": [
+      {"field": "state", "title": "State"},
+      {"field": "metric", "title": "Metric"},
+      {"field": "value", "title": "Access (%)", "format": ".1f"}
+    ]
+  }
+}

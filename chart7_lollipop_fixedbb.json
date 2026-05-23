@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Fixed Broadband Access vs National Average (2024)",
+  "width": "container",
+  "height": 340,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"state": "W.P. Kuala Lumpur", "fixedBB": 74.27},
+          {"state": "Selangor", "fixedBB": 60.16},
+          {"state": "Pulau Pinang", "fixedBB": 55.76},
+          {"state": "Melaka", "fixedBB": 55.74},
+          {"state": "Johor", "fixedBB": 53.86},
+          {"state": "Negeri Sembilan", "fixedBB": 47.84},
+          {"state": "Perak", "fixedBB": 40.76},
+          {"state": "Kedah", "fixedBB": 34.86},
+          {"state": "Sarawak", "fixedBB": 33.37},
+          {"state": "Perlis", "fixedBB": 32.63},
+          {"state": "Pahang", "fixedBB": 32.31},
+          {"state": "Sabah", "fixedBB": 31.67},
+          {"state": "Terengganu", "fixedBB": 28.91},
+          {"state": "W.P. Labuan", "fixedBB": 42.17},
+          {"state": "Kelantan", "fixedBB": 25.20}
+        ]
+      },
+      "mark": {"type": "rule", "color": "#1e2d45", "strokeWidth": 1},
+      "encoding": {
+        "y": {"field": "state", "type": "nominal", "sort": "-x", "axis": {"title": null, "labelFontSize": 10}},
+        "x": {"field": "fixedBB", "type": "quantitative", "axis": {"title": "Fixed Broadband Access (%)"}, "scale": {"domain": [15, 80]}},
+        "x2": {"datum": 47.56}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"state": "W.P. Kuala Lumpur", "fixedBB": 74.27},
+          {"state": "Selangor", "fixedBB": 60.16},
+          {"state": "Pulau Pinang", "fixedBB": 55.76},
+          {"state": "Melaka", "fixedBB": 55.74},
+          {"state": "Johor", "fixedBB": 53.86},
+          {"state": "Negeri Sembilan", "fixedBB": 47.84},
+          {"state": "Perak", "fixedBB": 40.76},
+          {"state": "Kedah", "fixedBB": 34.86},
+          {"state": "Sarawak", "fixedBB": 33.37},
+          {"state": "Perlis", "fixedBB": 32.63},
+          {"state": "Pahang", "fixedBB": 32.31},
+          {"state": "Sabah", "fixedBB": 31.67},
+          {"state": "Terengganu", "fixedBB": 28.91},
+          {"state": "W.P. Labuan", "fixedBB": 42.17},
+          {"state": "Kelantan", "fixedBB": 25.20}
+        ]
+      },
+      "mark": {"type": "circle", "filled": true, "size": 90},
+      "encoding": {
+        "y": {"field": "state", "type": "nominal", "sort": "-x"},
+        "x": {"field": "fixedBB", "type": "quantitative"},
+        "color": {
+          "condition": {"test": "datum.fixedBB >= 47.56", "value": "#00d4ff"},
+          "value": "#ff6b35"
+        },
+        "tooltip": [
+          {"field": "state", "title": "State"},
+          {"field": "fixedBB", "title": "Fixed Broadband (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "4G and 5G Population Coverage (2023-2025)",
+  "width": "container",
+  "height": 240,
+  "data": {
+    "values": [
+      {"year": "2023", "type": "4G Coverage", "value": 98.0},
+      {"year": "2024", "type": "4G Coverage", "value": 98.4},
+      {"year": "2025", "type": "4G Coverage", "value": 98.8},
+      {"year": "2023", "type": "5G Coverage", "value": 63.6},
+      {"year": "2024", "type": "5G Coverage", "value": 82.0},
+      {"year": "2025", "type": "5G Coverage", "value": 82.4}
+    ]
+  },
+  "mark": {"type": "line", "strokeWidth": 2.5, "point": {"filled": true, "size": 80}},
+  "encoding": {
+    "x": {"field": "year", "type": "ordinal", "axis": {"title": null}},
+    "y": {"field": "value", "type": "quantitative", "axis": {"title": "Population Coverage (%)"}, "scale": {"domain": [60, 102]}},
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "scale": {"domain": ["4G Coverage", "5G Coverage"], "range": ["#00d4ff", "#ff6b35"]},
+      "legend": {"title": null}
+    },
+    "tooltip": [
+      {"field": "year"},
+      {"field": "type", "title": "Network"},
+      {"field": "value", "title": "Coverage (%)", "format": ".1f"}
+    ]
+  }
+}

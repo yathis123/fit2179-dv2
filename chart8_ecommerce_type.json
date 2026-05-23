@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "E-Commerce by Transaction Type (2023)",
+  "width": "container",
+  "height": 280,
+  "data": {
+    "values": [
+      {"type": "B2B (Business to Business)", "value": 817.1},
+      {"type": "B2C (Business to Consumer)", "value": 336.6},
+      {"type": "B2G (Business to Government)", "value": 30.4}
+    ]
+  },
+  "mark": {"type": "arc", "innerRadius": 70, "outerRadius": 120},
+  "encoding": {
+    "theta": {"field": "value", "type": "quantitative"},
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "scale": {"range": ["#00d4ff", "#ff6b35", "#7c3aed"]},
+      "legend": {"title": null, "orient": "bottom"}
+    },
+    "tooltip": [
+      {"field": "type", "title": "Transaction Type"},
+      {"field": "value", "title": "Revenue (RM B)", "format": ".1f"}
+    ]
+  }
+}

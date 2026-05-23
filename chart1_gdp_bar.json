@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Digital Economy Composition (2023 vs 2024)",
+  "width": "container",
+  "height": 260,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"year": "2023", "component": "ICT Industry", "value": 171.7},
+          {"year": "2023", "component": "E-Commerce", "value": 257.6},
+          {"year": "2024", "component": "ICT Industry", "value": 175.9},
+          {"year": "2024", "component": "E-Commerce", "value": 275.4}
+        ]
+      },
+      "mark": {"type": "bar", "cornerRadiusTopLeft": 4, "cornerRadiusTopRight": 4},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal", "axis": {"title": null}},
+        "y": {"field": "value", "type": "quantitative", "axis": {"title": "RM Billion"}, "stack": true},
+        "color": {
+          "field": "component",
+          "type": "nominal",
+          "scale": {"domain": ["ICT Industry", "E-Commerce"], "range": ["#7c3aed", "#00d4ff"]},
+          "legend": {"title": null, "orient": "top"}
+        },
+        "tooltip": [
+          {"field": "year"},
+          {"field": "component"},
+          {"field": "value", "title": "RM Billion", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"year": "2024", "value": 470, "label": "▲ 5.1% growth"}]},
+      "mark": {"type": "text", "color": "#00d4ff", "fontSize": 12, "fontWeight": "bold", "dy": -10},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "value", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}

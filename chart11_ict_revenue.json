@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "ICT Services Revenue by Quarter (Q1-Q3 2025)",
+  "width": "container",
+  "height": 220,
+  "data": {
+    "values": [
+      {"quarter": "Q1 2025", "revenue": 44.8, "persons": 145728, "wages": 2.38},
+      {"quarter": "Q2 2025", "revenue": 45.3, "persons": 146214, "wages": 2.39},
+      {"quarter": "Q3 2025", "revenue": 45.9, "persons": 146537, "wages": 2.41}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusTopLeft": 4, "cornerRadiusTopRight": 4},
+      "encoding": {
+        "x": {"field": "quarter", "type": "ordinal", "axis": {"title": null}},
+        "y": {"field": "revenue", "type": "quantitative", "axis": {"title": "Revenue (RM Billion)"}, "scale": {"zero": true, "domain": [0, 50]}},
+        "color": {
+          "field": "revenue",
+          "type": "quantitative",
+          "scale": {"domain": [44, 46], "range": ["#7c3aed", "#00d4ff"]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "quarter"},
+          {"field": "revenue", "title": "Revenue (RM B)", "format": ".1f"},
+          {"field": "persons", "title": "Persons Engaged", "format": ","},
+          {"field": "wages", "title": "Salaries (RM B)", "format": ".2f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -10, "fontSize": 11, "fontWeight": "bold", "color": "#00d4ff"},
+      "encoding": {
+        "x": {"field": "quarter", "type": "ordinal"},
+        "y": {"field": "revenue", "type": "quantitative"},
+        "text": {"field": "revenue", "format": ".1f"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Fixed Broadband vs Internet Access by State (2024)",
+  "width": "container",
+  "height": 380,
+  "data": {
+    "values": [
+      {"state": "W.P. Kuala Lumpur", "internet": 100.0, "fixedBB": 74.27},
+      {"state": "W.P. Labuan", "internet": 99.70, "fixedBB": 42.17},
+      {"state": "Pulau Pinang", "internet": 99.67, "fixedBB": 55.76},
+      {"state": "Selangor", "internet": 99.52, "fixedBB": 60.16},
+      {"state": "Johor", "internet": 98.97, "fixedBB": 53.86},
+      {"state": "Melaka", "internet": 96.77, "fixedBB": 55.74},
+      {"state": "Negeri Sembilan", "internet": 96.44, "fixedBB": 47.84},
+      {"state": "Kedah", "internet": 96.35, "fixedBB": 34.86},
+      {"state": "Perlis", "internet": 96.22, "fixedBB": 32.63},
+      {"state": "Pahang", "internet": 95.78, "fixedBB": 32.31},
+      {"state": "Perak", "internet": 95.63, "fixedBB": 40.76},
+      {"state": "Terengganu", "internet": 95.20, "fixedBB": 28.91},
+      {"state": "Kelantan", "internet": 94.94, "fixedBB": 25.20},
+      {"state": "Sarawak", "internet": 91.05, "fixedBB": 33.37},
+      {"state": "Sabah", "internet": 91.01, "fixedBB": 31.67}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "circle", "filled": true, "size": 100, "opacity": 0.85},
+      "encoding": {
+        "x": {"field": "fixedBB", "type": "quantitative", "axis": {"title": "Fixed Broadband Access (%)"}, "scale": {"domain": [20, 80]}},
+        "y": {"field": "internet", "type": "quantitative", "axis": {"title": "Total Internet Access (%)"}, "scale": {"domain": [88, 102]}},
+        "color": {"field": "internet", "type": "quantitative", "scale": {"domain": [88, 100], "range": ["#ff6b35", "#00d4ff"]}, "legend": null},
+        "tooltip": [
+          {"field": "state", "title": "State"},
+          {"field": "internet", "title": "Internet Access (%)", "format": ".1f"},
+          {"field": "fixedBB", "title": "Fixed Broadband (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "dx": 7, "fontSize": 10},
+      "encoding": {
+        "x": {"field": "fixedBB", "type": "quantitative"},
+        "y": {"field": "internet", "type": "quantitative"},
+        "text": {"field": "state"},
+        "color": {"value": "#8094b0"}
+      }
+    }
+  ]
+}
