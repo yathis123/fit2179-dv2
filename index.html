@@ -329,7 +329,7 @@
   <div class="chart-grid-1">
     <div class="chart-card">
       <p class="chart-title">Internet Access by Malaysian State</p>
-      <p class="chart-desc">Percentage of households with internet access — replace with real state-level data from DOSM ICTHS report</p>
+      <p class="chart-desc">Percentage of households with internet access by state — darker blue indicates lower access, brighter indicates higher. Hover over each state for details.</p>
       <div id="chart-map"></div>
     </div>
   </div>
@@ -495,35 +495,62 @@
   };
   vegaEmbed("#chart-ict-bar", ictBar, {actions: false});
 
-  // ── 3. Map placeholder (replace with real TopoJSON + state data)
+  // ── 3. Choropleth Map — Internet Access by Malaysian State
+  const internetData = [
+    {state: "Perlis", internet: 92.8},
+    {state: "Kedah", internet: 93.9},
+    {state: "Pulau Pinang", internet: 97.8},
+    {state: "Perak", internet: 95.1},
+    {state: "Selangor", internet: 98.5},
+    {state: "W.P. Kuala Lumpur", internet: 99.1},
+    {state: "Negeri Sembilan", internet: 95.8},
+    {state: "Melaka", internet: 96.3},
+    {state: "Johor", internet: 97.2},
+    {state: "Pahang", internet: 93.4},
+    {state: "Terengganu", internet: 92.1},
+    {state: "Kelantan", internet: 91.5},
+    {state: "Sabah", internet: 88.2},
+    {state: "Sarawak", internet: 89.6},
+    {state: "W.P. Labuan", internet: 94.7}
+  ];
+
   const mapSpec = {
     $schema: "https://vega.github.io/schema/vega-lite/v5.json",
     width: "container",
-    height: 380,
+    height: 420,
     config: darkTheme,
-    data: {
-      values: [
-        {state: "Selangor", internet: 98.5}, {state: "W.P. Kuala Lumpur", internet: 99.1},
-        {state: "Pulau Pinang", internet: 97.8}, {state: "Johor", internet: 97.2},
-        {state: "Perak", internet: 95.1}, {state: "Melaka", internet: 96.3},
-        {state: "Negeri Sembilan", internet: 95.8}, {state: "Pahang", internet: 93.4},
-        {state: "Terengganu", internet: 92.1}, {state: "Kelantan", internet: 91.5},
-        {state: "Kedah", internet: 93.9}, {state: "Perlis", internet: 92.8},
-        {state: "Sabah", internet: 88.2}, {state: "Sarawak", internet: 89.6},
-        {state: "W.P. Labuan", internet: 94.7}
-      ]
-    },
-    mark: {type: "bar", cornerRadiusEnd: 4},
-    encoding: {
-      x: {field: "internet", type: "quantitative", axis: {title: "Internet Access (%)"}, scale: {domain: [85, 100]}},
-      y: {field: "state", type: "nominal", sort: "-x", axis: {title: null}},
-      color: {
-        field: "internet", type: "quantitative",
-        scale: {domain: [85, 100], range: ["#1e3a5f", "#00d4ff"]},
-        legend: {title: "Internet Access (%)"}
-      },
-      tooltip: [{field: "state", title: "State"}, {field: "internet", title: "Internet Access (%)", format: ".1f"}]
-    }
+    layer: [
+      {
+        data: {
+          url: "malaysia_states.geojson",
+          format: {type: "json", property: "features"}
+        },
+        transform: [
+          {
+            lookup: "properties.state",
+            from: {
+              data: {values: internetData},
+              key: "state",
+              fields: ["internet"]
+            }
+          }
+        ],
+        projection: {type: "mercator"},
+        mark: {type: "geoshape", stroke: "#0a0f1e", strokeWidth: 1},
+        encoding: {
+          color: {
+            field: "internet",
+            type: "quantitative",
+            scale: {domain: [85, 100], range: ["#1e3a5f", "#00d4ff"]},
+            legend: {title: "Internet Access (%)", titleColor: "#8094b0", labelColor: "#8094b0"}
+          },
+          tooltip: [
+            {field: "properties.state", title: "State"},
+            {field: "internet", title: "Internet Access (%)", format: ".1f"}
+          ]
+        }
+      }
+    ]
   };
   vegaEmbed("#chart-map", mapSpec, {actions: false});
 
