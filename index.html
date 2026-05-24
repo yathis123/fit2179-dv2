@@ -307,7 +307,7 @@ vegaEmbed("#chart-map", {
   $schema: "https://vega.github.io/schema/vega-lite/v5.json",
   width: "container", height: 420, config: T,
   layer: [{
-    data: { url: "malaysia_states.geojson", format: {type: "json", property: "features"} },
+    data: { url: "malaysia_states.geojson", format: {type: "geojson"} },
     transform: [{
       lookup: "properties.state",
       from: { data: {values: stateData}, key: "state", fields: ["internet","fixedBB","computer","internet_urban","internet_rural"] }
@@ -321,7 +321,7 @@ vegaEmbed("#chart-map", {
         legend: {title: "Internet Access (%)"}
       },
       tooltip: [
-        {field: "properties.state", title: "State"},
+        {field: "state", title: "State"},
         {field: "internet", title: "Internet Access (%)", format: ".1f"},
         {field: "internet_urban", title: "Urban (%)", format: ".1f"},
         {field: "internet_rural", title: "Rural (%)", format: ".1f"},
